@@ -5,7 +5,7 @@
 
 ## What is koala-shoes?
 
-koala-shoes is an issues notification board that bundles together the issues that you've raised on other repo's. It highlights new comments that have been made on your issues and allows you to comment further or to close them.
+koala-shoes is an issues notification board that bundles together the issues that you've raised on other repo's. It highlights new comments that have been made on your issues and allows you to comment further or to close them if you are satisfied that they have been resolved.
 
 ## Why do you need it?
 
