@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/koalabears/koala-shoes/issues"
   },
-  "homepage": "https://github.com/koalabears/koala-shoes#readme"
+  "homepage": "https://github.com/koalabears/koala-shoes#readme",
+  "dependencies": {
+    "env2": "^2.0.4"
+  }
 }
