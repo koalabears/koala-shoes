@@ -1,7 +1,7 @@
 # koala-shoes
-:koala:     
-:feet:     
-:feet:  
+:koala:     Follow your issues     
+:feet:      Step by   
+:feet:      Step...
 
 ## What is koala-shoes?
 
@@ -26,7 +26,8 @@ The project will be deployed to Heroku
 
 ## Steps
 - [x] set up basic server  
-- [ ] set up Github authentication  
+- [x] set up Github authentication
+- [ ] set up JWT (JSON web tokens)
 - [ ] create requests to get issues data from Github API  
 - [ ] set up database to store and retrieve issues data  
 - [ ] set up infrastructure to check what data is new  

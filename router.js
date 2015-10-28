@@ -2,17 +2,22 @@ var handler = require('./handler.js');
 var fs = require('fs');
 
 var routes = {
-  "/" : handler.home,
-  "/issues" : handler.issues,
-  "/main.js" : handler.mainjs,
+  '' : handler.home,
+  'auth' : handler.auth,
+  'issues' : handler.issues,
+  "main.js" : handler.mainjs,
   '404' : handler.notFound
 };
 
 module.exports = function(req, res){
-  console.log(req.url);
-  if(routes[req.url]){
-    routes[req.url](req, res);
+  var tokenisedUrl = tokeniseUrl(req);
+  if(routes[tokenisedUrl[1]]){
+    routes[tokenisedUrl[1]](req, res, tokenisedUrl);
   } else {
     routes[404](req, res);
   }
+
 };
+function tokeniseUrl(request) {
+  return request.url.split('/'); //getting all requests in array format so we can target the endpoints
+}
