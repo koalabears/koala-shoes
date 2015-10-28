@@ -4,6 +4,7 @@ var fs = require('fs');
 var routes = {
   "/" : handler.home,
   "/issues" : handler.issues,
+  "/main.js" : handler.mainjs,
   '404' : handler.notFound
 };
 
