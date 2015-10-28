@@ -31,5 +31,4 @@ The project will be deployed to Heroku
 - set up database to store and retrieve issues data
 - set up infrastructure to check what data is new
 - build front-end with features e.g. toggling to show/close issues
-
-deploy to Heroku
+- deploy to Heroku
