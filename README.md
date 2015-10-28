@@ -1,7 +1,7 @@
 # koala-shoes
-:koala:     follow your issues     
-:feet:      step by   
-:feet:      step...
+:koala:     Follow your issues     
+:feet:      Step by   
+:feet:      Step...
 
 ## What is koala-shoes?
 
