@@ -1,0 +1,20 @@
+{
+  "name": "koala-shoes",
+  "version": "1.0.0",
+  "description": ":koala:      :feet:      :feet:",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koalabears/koala-shoes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koalabears/koala-shoes/issues"
+  },
+  "homepage": "https://github.com/koalabears/koala-shoes#readme"
+}
