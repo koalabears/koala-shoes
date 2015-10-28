@@ -3,15 +3,13 @@ var fs = require('fs');
 
 var routes = {
   '' : handler.home,
+  'auth' : handler.auth,
   'issues' : handler.issues,
   '404' : handler.notFound
 };
 
 module.exports = function(req, res){
   var tokenisedUrl = tokeniseUrl(req);
-  //console.log(req.url);
-  //console.log("*"+tokenisedUrl[1]+"*");
-  //console.log(handler.home);
   if(routes[tokenisedUrl[1]]){
     routes[tokenisedUrl[1]](req, res, tokenisedUrl);
   } else {
