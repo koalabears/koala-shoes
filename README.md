@@ -16,10 +16,20 @@ koala-shoes keeps you up to date with the repo issues that you've raised on othe
 ## How?
 
 Koalabears will be using the following technologies:
-- NodeJS
 - Redis to store issues data
 - sockets to display any issue updates
 - Github API
 - OAuth2 to authenticate the Github user
+- JSON web tokens to store session info
 
 The project will be deployed to Heroku
+
+## Steps
+1) set up basic server
+2) set up Github authentication
+3) create requests to get issues data from Github API
+4) set up database to store and retrieve issues data
+5) set up infrastructure to check what data is new
+5) build front-end with features e.g. toggling to show/close issues
+
+deploy to Heroku
