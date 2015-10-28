@@ -10,3 +10,5 @@ koala-shoes is an issues notification board that bundles together the issues tha
 ## Why do you need it?
 
 koala-shoes keeps you up to date with the repo issues that you've raised on other projects. Remembering all of the issues you have raised can be difficult and so koala-shoes enables you to continue to give feedback on every project you have engaged with which in turn will help to further develop that project :+1:
+
+![img](https://cloud.githubusercontent.com/assets/11833296/10790056/0a31f1c2-7d79-11e5-8c4b-35aa1d9fb3ce.jpg)
