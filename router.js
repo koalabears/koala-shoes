@@ -5,6 +5,7 @@ var routes = {
   '' : handler.home,
   'auth' : handler.auth,
   'issues' : handler.issues,
+  "main.js" : handler.mainjs,
   '404' : handler.notFound
 };
 
@@ -15,8 +16,8 @@ module.exports = function(req, res){
   } else {
     routes[404](req, res);
   }
-};
 
+};
 function tokeniseUrl(request) {
   return request.url.split('/'); //getting all requests in array format so we can target the endpoints
 }
