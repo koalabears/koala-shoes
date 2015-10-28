@@ -1,2 +1,2 @@
 # koala-shoes
-:koala: :feet: :feet:
+:koala:   :feet:   :feet:
