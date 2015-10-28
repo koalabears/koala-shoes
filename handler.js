@@ -28,14 +28,11 @@ handler.issues = function(req, res){
   res.end(issues);
 };
 
-<<<<<<< HEAD
 handler.mainjs = function(req, res){
   res.writeHead(200, headersJs);
   res.end(mainjs);
 };
 
-=======
->>>>>>> master
 handler.notFound = function(req, res){
   res.writeHead(404, headersHtml);
   res.end('Resource not found');
