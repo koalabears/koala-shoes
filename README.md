@@ -25,10 +25,10 @@ Koalabears will be using the following technologies:
 The project will be deployed to Heroku
 
 ## Steps
-[] set up basic server  
-[] set up Github authentication  
-[] create requests to get issues data from Github API  
-[] set up database to store and retrieve issues data  
-[] set up infrastructure to check what data is new  
-[] build front-end with features e.g. toggling to show/close issues  
-[] deploy to Heroku
+[ ] set up basic server  
+[ ] set up Github authentication  
+[ ] create requests to get issues data from Github API  
+[ ] set up database to store and retrieve issues data  
+[ ] set up infrastructure to check what data is new  
+[ ] build front-end with features e.g. toggling to show/close issues  
+[ ] deploy to Heroku
