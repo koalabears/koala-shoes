@@ -1,2 +1,2 @@
 # koala-shoes
-:footprint :sandals :koala:
+:footprint: :sandals: :koala:
