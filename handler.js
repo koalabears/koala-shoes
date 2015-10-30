@@ -1,6 +1,7 @@
 var handler = module.exports = {};
 var auth = require('./auth.js');
 var fs = require('fs');
+var api = require('./githubApi.js');
 
 
 var index = fs.readFileSync(__dirname + '/public/html/index.html');
@@ -26,9 +27,11 @@ handler.home = function(req, res){
   res.end(index);
 };
 
-handler.issues = function(req, res){
+handler.issues = function(req, res, tokenisedUrl){
   res.writeHead(200, headersHtml);
-  res.end(issues);
+  api.getIssues(tokenisedUrl[2].split('=')[1], function(issueData){
+    console.log(issueData);
+  });
 };
 
 handler.mainjs = function(req, res){
@@ -49,4 +52,5 @@ handler.notFound = function(req, res){
 handler.auth = function(req, res){
   res.writeHead(200, headersHtml);
   auth.buildPostData(req, res, auth.getAccessToken);
+
 };

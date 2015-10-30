@@ -28,7 +28,7 @@ The project will be deployed to Heroku
 - [x] set up basic server  
 - [x] set up Github authentication
 - [x] set up JWT (JSON web tokens)
-- [ ] create requests to get issues data from Github API  
+- [x] create requests to get issues data from Github API  
 - [x] set up database to store usernames and access tokens
 - [ ] set up database to store and retrieve issues data  
 - [ ] set up infrastructure to check what data is new  
