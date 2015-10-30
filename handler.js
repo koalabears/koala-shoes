@@ -27,6 +27,11 @@ handler.home = function(req, res){
   res.end(index);
 };
 
+handler.issuesTest = function(req, res) {
+  res.writeHead(200, headersHtml)
+  res.end(issues);
+}
+
 handler.issues = function(req, res, tokenisedUrl){
   res.writeHead(200, headersHtml);
   api.getIssues(tokenisedUrl[2].split('=')[1], function(issueData){
