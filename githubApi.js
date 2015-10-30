@@ -9,12 +9,9 @@ var issues = fs.readFileSync(__dirname + '/public/html/issues.html');
 var api = module.exports = {};
 
 api.getIssues = function(jToken, callback) {
-  console.log("*****", typeof callback);
   var decodedJWT = jwt.decode(jToken);
   var username = decodedJWT.auth;
-  console.log('user'+username);
   redis.getAccessToken(username, function(githubAccessToken) {
-    console.log(githubAccessToken);
     var options = {
       host: 'api.github.com',
       path: '/issues?filter=assigned&state=open',
@@ -26,11 +23,9 @@ api.getIssues = function(jToken, callback) {
     };
     var issuesReq = https.request(options, function(res) {
       parseBody(res, function(body) {
-        console.log("**********!", body);
         callback(body);
       });
     });
-    issuesReq.setHeader('User-Agent', 'koala-shoes');
     issuesReq.end();
   });
 

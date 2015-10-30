@@ -13,7 +13,6 @@ var routes = {
 
 module.exports = function(req, res){
   var tokenisedUrl = tokeniseUrl(req);
-  console.log(tokenisedUrl);
   if(routes[tokenisedUrl[1]]){
     routes[tokenisedUrl[1]](req, res, tokenisedUrl);
   } else {
@@ -22,6 +21,5 @@ module.exports = function(req, res){
 
 };
 function tokeniseUrl(request) {
-  console.log("!!!!!", request.url.split('/'));
   return request.url.split('/'); //getting all requests in array format so we can target the endpoints
 }
