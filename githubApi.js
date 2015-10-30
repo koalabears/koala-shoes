@@ -26,7 +26,6 @@ api.getIssues = function(jToken, callback) {
         callback(body);
       });
     });
-    issuesReq.setHeader('User-Agent', 'koala-shoes');
     issuesReq.end();
   });
 
