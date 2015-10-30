@@ -29,7 +29,7 @@ auth.getAccessToken = function(req, res, data){
   }, function(responseFromGithub){
       responseFromGithub.on('data', function(chunk){
         var accessToken = chunk.toString().split('access_token=')[1].split('&')[0];
-           auth.setToken(req, res, accessToken);//MOVE THIS TO SET TOKEN
+           auth.setJToken(req, res, accessToken);
       });
   });
   accessTokenRequest.end(data);
@@ -37,11 +37,11 @@ auth.getAccessToken = function(req, res, data){
 
 };
 
-auth.setToken = function(req,res,accessToken){
+auth.setJToken = function(req,res,accessToken){
   console.log('set token here');
   var cookie = Math.floor(Math.random() * 100000000);
   auth.getUserData(accessToken, function(userName){
-    redis.userId(accessToken, userName, function(){
+    redis.userId(userName, accessToken, function(){
       var jToken = jwt.sign({
         auth: userName,
         agent: req.headers['user-agent'],
@@ -50,7 +50,7 @@ auth.setToken = function(req,res,accessToken){
       console.log('redirect! ', jToken);
       res.writeHead(302, {
         'Content-Type': 'text/html',
-        'Location': '/issues/?token='+jToken + '&userName=' + userName
+        'Location': '/issues/?token='+jToken
       });
       res.end(issues);
     });
