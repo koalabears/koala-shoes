@@ -19,5 +19,6 @@ module.exports = function(req, res){
 
 };
 function tokeniseUrl(request) {
+  console.log("!!!!!", request.url.split('/'));
   return request.url.split('/'); //getting all requests in array format so we can target the endpoints
 }

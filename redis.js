@@ -9,14 +9,21 @@ function stopDB(){
   client.quit();
 }
 
-function userId(token, userName, callback){
-  client.set('user'+token, userName, function(err,reply){
+function userId(userName, token, callback){
+  client.set('user'+ userName, token, function(err,reply){
     callback();
+  });
+}
+
+function getAccessToken(username, callback){
+  client.get('user'+ username, function(err, reply){
+      callback(reply);
   });
 }
 
 module.exports = {
   startDB: startDB,
   stopDB: stopDB,
-  userId: userId
+  userId: userId,
+  getAccessToken: getAccessToken
 };
