@@ -5,7 +5,7 @@
 
 Unfortunately due to unforseen circumstances, the koalabears' services are offline this week. See below
 
-_"Courage doesn't always roar. Sometimes courage is the little voice at the end of the day that says I'll try again tomorrow..."_
+_"Courage doesn't always roar. Sometimes courage is the little voice at the end of the day that says I'll try again tomorrow...(or after the weekend)"_
 
 ## What is koala-shoes?
 
