@@ -1,11 +1,10 @@
 window.onload = function() {
-  var issueData;
   main();
 
   function main() {
     var issueData = getIssueData(function(issueData) {
       buildPageFromIssueData(issueData);
-      addToggleFunctionality(issueData);
+      addEventListeners(issueData);
     });
   }
 
@@ -25,21 +24,75 @@ window.onload = function() {
   };
 
   function buildCollapsedIssueDiv(issue) {
-    var html = '<div class = \'issue\'>';
-    html += '<h2>'+issue.title+'<\/h2>'
+    var html = '';
     var unviewedChanges = issue.unviewedIssueChanges;
     if (unviewedChanges && unviewedChanges.length !==0) {
-        html += buildHtmlFromUnviewedIssueData(unviewedChanges);
-        html += buildIssueButtonsHTML();
+      html += '<div class = \'issue active\'>'
+      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+      html += buildCollapsedIssueContentHTML(issue);
+      html += buildVisibleIssueButtonsHTML();
+    } else {
+      html += '<div class = \'issue\'>'
+      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+      html += buildCollapsedIssueContentHTML(issue);
+      html += buildHiddenIssueButtonsHTML();
     }
     html += '<\/div>';
     return html;
   }
 
-  function addToggleFunctionality(issueData) {
+  function buildCollapsedIssueContentHTML(issue) {
+    var unviewedChanges = issue.unviewedIssueChanges;
+    var html = '';
+    if (unviewedChanges && unviewedChanges.length !==0) {
+      html += buildHtmlFromUnviewedIssueData(unviewedChanges);
+      html += '<\/div>'
+    } else {
+      html += '<\/div>'
+    }
+    return html;
+  }
+
+  function buildExpandedIssueContentHTML(issue) {
+    var unviewedChanges = issue.unviewedIssueChanges;
+    var viewedChanges = issue.viewedIssueChanges;
+    var html = '';
+    if (unviewedChanges && unviewedChanges.length !==0) {
+        html += buildHtmlFromUnviewedIssueData(unviewedChanges);
+    }
+    if (viewedChanges && viewedChanges.length !==0) {
+        html += buildHtmlFromViewedIssueData(viewedChanges);
+    }
+    return html;
+  }
+
+  function buildHtmlFromUnviewedIssueData(unviewedChanges) {
+    return unviewedChanges.map(function(unviewedChange) {
+      var html = '<div class = \'unviewedChange\'>'
+      if (unviewedChange.type === 'comment') {
+        html += unviewedChange.text;
+      }
+      html += '<\/div>';
+      return html;
+    }).join('');
+  }
+
+  function buildHtmlFromViewedIssueData(viewedChanges) {
+    return viewedChanges.map(function(viewedChange) {
+      var html = '<div class = \'viewedChange\'>'
+      if (viewedChange.type === 'comment') {
+        html += viewedChange.text;
+      }
+      html += '<\/div>';
+      return html;
+    }).join('');
+  }
+
+  function addEventListeners(issueData) {
     var issueDivArray = getIssueDivArray();
     issueDivArray.forEach(function(issueDiv, index) {
       addClickToggle(issueDiv, issueData[index]);
+      addButtonFunctionality(issueDiv, issueData[index]);
     });
   }
 
@@ -49,14 +102,19 @@ window.onload = function() {
   }
 
   function addClickToggle(issueDiv, issueData) {
-    issueDiv.addEventListener('click', function(e) {
-      e.preventDefault();
+    issueDiv.getElementsByTagName('h2')[0]
+      .addEventListener('click', function(e) {
+      var issueContentDiv = issueDiv.getElementsByClassName('issue-content')[0];
+      e.stopPropagation();
       if (hasClass('showHistory', issueDiv)) {
-        issueDiv.innerHTML = buildCollapsedIssueDiv(issueData);
+        issueContentDiv.innerHTML = buildCollapsedIssueContentHTML(issueData);
       } else {
-        issueDiv.innerHTML = "Woah!";
+        issueContentDiv.innerHTML = buildExpandedIssueContentHTML(issueData);
       }
-      toggleClass('showHistory', issueDiv);
+      if (!hasClass('active', issueDiv)) {
+        toggleClass('hidden', issueDiv.getElementsByClassName('buttons')[0]);
+      }
+      toggleClass('showHistory', issueDiv)
     });
   }
 
@@ -75,28 +133,55 @@ window.onload = function() {
     }
   }
 
-  function buildHtmlFromUnviewedIssueData(unviewedChanges) {
-    return unviewedChanges.map(function(unviewedChange) {
-      var html = '<div class = \'unviewedChange\'>'
-      if (unviewedChange.type === 'comment') {
-        html += unviewedChange.text;
-      }
-      html += '<\/div>';
-      return html;
-    }).join('');
-  }
-
-  function buildIssueButtonsHTML() {
-    var html = '<div>';
-    html += buildButton('OK');
-    html += buildButton('close');
-    html += buildButton('comment');
+  function buildHiddenIssueButtonsHTML() {
+    var html = '<div class=\'buttons hidden\'>';
+    html += buildButtonsHTML();
     html += '<\/div>';
     return html;
   }
 
+  function buildVisibleIssueButtonsHTML() {
+    var html = '<div class=\'buttons\'>';
+    html += buildButtonsHTML();
+    html += '<\/div>';
+    return html;
+  }
+
+  function buildButtonsHTML() {
+    return buildButton('OK') + buildButton('close') + buildButton('comment');
+  }
+
+
   function buildButton(name) {
     return '<button>' + name + '<\/button>'
+  }
+
+  function addButtonFunctionality(issueDiv, issueData) {
+    var buttons = issueDiv.getElementsByTagName('button');
+    buttons[0].addEventListener('click', function(event) {
+      event.stopPropagation();
+      setIssueSeen(issueDiv, issueData);
+    });
+    buttons[1].addEventListener('click', function() {
+      event.preventDefault();
+      closeIssue(issueDiv, issueData);
+    });
+    buttons[2].addEventListener('click', function() {
+      event.preventDefault();
+      commentOnIssue(issueDiv, issueData);
+    });
+  }
+
+  function setIssueSeen(issueDiv, issueData) {
+    console.log('issue ' + issueData.id + ' seen');
+  }
+
+  function closeIssue(issueDiv, issueData) {
+    console.log('issue ' + issueData.id + ' closed');
+  }
+
+  function commentOnIssue(issueDiv, issueData) {
+    console.log('issue ' + issueData.id + ' commented on');
   }
 
   function getIssueData(callback) {
