@@ -19,13 +19,13 @@ function buildHTML() {
       var html = '';
       var unviewedChanges = issue.unviewedIssueChanges;
       if (unviewedChanges && unviewedChanges.length !==0) {
-        html += '<div class = \'issue active\'>'
-        html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+        html += '<div class = \'issue active\'>';
+        html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>';
         html += buildCollapsedIssueContentHTML(issue);
         html += buildVisibleIssueButtonsHTML();
       } else {
-        html += '<div class = \'issue\'>'
-        html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+        html += '<div class = \'issue\'>';
+        html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>';
         html += buildCollapsedIssueContentHTML(issue);
         html += buildHiddenIssueButtonsHTML();
       }
@@ -38,9 +38,9 @@ function buildHTML() {
       var html = '';
       if (unviewedChanges && unviewedChanges.length !==0) {
         html += buildHtmlFromUnviewedIssueData(unviewedChanges);
-        html += '<\/div>'
+        html += '<\/div>';
       } else {
-        html += '<\/div>'
+        html += '<\/div>';
       }
       return html;
     }
@@ -71,7 +71,7 @@ function buildHTML() {
 
     function buildHtmlFromViewedIssueData(viewedChanges) {
       return viewedChanges.map(function(viewedChange) {
-        var html = '<div class = \'viewedChange\'>'
+        var html = '<div class = \'viewedChange\'>';
         if (viewedChange.type === 'comment') {
           html += viewedChange.text;
         }
@@ -120,7 +120,7 @@ function buildHTML() {
 
 
     function buildButton(name) {
-      return '<button>' + name + '<\/button>'
+      return '<button>' + name + '<\/button>';
     }
 
     return {
