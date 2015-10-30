@@ -21,19 +21,19 @@ window.onload = function() {
 
   function buildHtmlFromIssueData(issueData) {
     return issueData.map(buildCollapsedIssueDiv).join('');
-  };
+  }
 
   function buildCollapsedIssueDiv(issue) {
     var html = '';
     var unviewedChanges = issue.unviewedIssueChanges;
     if (unviewedChanges && unviewedChanges.length !==0) {
-      html += '<div class = \'issue active\'>'
-      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+      html += '<div class = \'issue active\'>';
+      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>';
       html += buildCollapsedIssueContentHTML(issue);
       html += buildVisibleIssueButtonsHTML();
     } else {
-      html += '<div class = \'issue\'>'
-      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>'
+      html += '<div class = \'issue\'>';
+      html += '<h2>' + issue.title + '<\/h2><div class=\'issue-content\'>';
       html += buildCollapsedIssueContentHTML(issue);
       html += buildHiddenIssueButtonsHTML();
     }
@@ -46,9 +46,9 @@ window.onload = function() {
     var html = '';
     if (unviewedChanges && unviewedChanges.length !==0) {
       html += buildHtmlFromUnviewedIssueData(unviewedChanges);
-      html += '<\/div>'
+      html += '<\/div>';
     } else {
-      html += '<\/div>'
+      html += '<\/div>';
     }
     return html;
   }
@@ -68,7 +68,7 @@ window.onload = function() {
 
   function buildHtmlFromUnviewedIssueData(unviewedChanges) {
     return unviewedChanges.map(function(unviewedChange) {
-      var html = '<div class = \'unviewedChange\'>'
+      var html = '<div class = \'unviewedChange\'>';
       if (unviewedChange.type === 'comment') {
         html += unviewedChange.text;
       }
@@ -79,7 +79,7 @@ window.onload = function() {
 
   function buildHtmlFromViewedIssueData(viewedChanges) {
     return viewedChanges.map(function(viewedChange) {
-      var html = '<div class = \'viewedChange\'>'
+      var html = '<div class = \'viewedChange\'>';
       if (viewedChange.type === 'comment') {
         html += viewedChange.text;
       }
@@ -114,7 +114,7 @@ window.onload = function() {
       if (!hasClass('active', issueDiv)) {
         toggleClass('hidden', issueDiv.getElementsByClassName('buttons')[0]);
       }
-      toggleClass('showHistory', issueDiv)
+      toggleClass('showHistory', issueDiv);
     });
   }
 
@@ -153,7 +153,7 @@ window.onload = function() {
 
 
   function buildButton(name) {
-    return '<button>' + name + '<\/button>'
+    return '<button>' + name + '<\/button>';
   }
 
   function addButtonFunctionality(issueDiv, issueData) {
