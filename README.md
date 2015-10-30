@@ -3,6 +3,10 @@
 :feet:      Step by   
 :feet:      Step...
 
+Unfortunately due to unforseen circumstances, the koalabears' services are offline this week. See below
+
+_"Courage doesn't always roar. Sometimes courage is the little voice at the end of the day that says I'll try again tomorrow..."_
+
 ## What is koala-shoes?
 
 koala-shoes is an issues notification board that bundles together the issues that you've raised on other repo's. It highlights new comments that have been made on your issues and allows you to comment further or to close them if you are satisfied that they have been resolved.
