@@ -1,7 +1,7 @@
 # koala-shoes
 :koala:     Follow your issues     
 :feet:      Step by   
-:feet:      Step...
+:feet:      Step....
 
 Unfortunately due to unforseen circumstances, the koalabears' services are offline this week. See below
 
